@@ -1,34 +1,39 @@
 #include <iostream>
-#include <bits/stdc++.h>
 using namespace std;
 int main ()
 {
     int a;
     cin>>a;
     int arr[a];
-    int min=INT_MAX;
-    int max=INT_MIN;
+    int best=INT_MIN;
+    int worst=INT_MAX;
     int count=0;
-    vector<int> v;
-    for (int i=0; i<a; i++)
-    {   
-
-        cin>>arr[i];
-        v.push_back(arr[i]);
-        
-        if (x>max)  
-        {
-            max=x;
-        }
-        if (x<min)
-        {
-            min=x;
-        }
-    }
-    sort (v.begin(),v.end());
     for (int i=0; i<a; i++)
     {
-        if (arr[i])
+        cin>>arr[i];
+        if (i!=0)
+        {
+            if (arr[i]<worst)
+            {   
+                count++;
+            }
+            else
+            if (arr[i]>best)
+            {
+                count++;
+            }
+        }
+        if (arr[i]==max(arr[i],best))
+        {
+            best=arr[i];
+        }
+        if (arr[i]==min (arr[i],worst))
+        {
+            worst=arr[i];
+        }
+        
     }
     cout<<count<<endl;
+    return 0;
+
 }
